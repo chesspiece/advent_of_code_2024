@@ -3,3 +3,4 @@
 *cache*
 *.lock*
 *.vscode*
+rust/target/*

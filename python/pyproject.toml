@@ -16,7 +16,6 @@ ruff = "^0.8.1"
 ipython = "^8.30.0"
 pyright = "^1.1.389"
 mypy = "^1.13.0"
-ruff-lsp = "^0.0.59"
 
 [build-system]
 requires = ["poetry-core"]

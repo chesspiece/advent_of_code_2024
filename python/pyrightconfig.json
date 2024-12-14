@@ -1,0 +1,21 @@
+{
+    "include": [
+      "days",
+      "main"
+    ],
+  
+    "exclude": [
+      "**/__pycache__"
+    ],
+
+    "ignore": [
+    ],
+
+    "typeCheckingMode": "strict",
+    "reportMissingImports": true,
+    "reportUnknownMemberType": false,
+    "reportUnknownVariableType": true,
+  
+    "pythonVersion": "3.12",
+    "pythonPlatform": "Linux"
+}

@@ -1,5 +1,6 @@
-from days.day1 import day1_part1, day1_part2
 import sys
+
+from days.day1 import day1_part1, day1_part2
 
 if __name__ == "__main__":
     days_dict = {1: [day1_part1, day1_part2]}

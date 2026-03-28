@@ -13,7 +13,7 @@ def parse_part1() -> tuple[npt.NDArray[np.int64], npt.NDArray[np.int64]]:
     first_list: list[int] = []
     second_list: list[int] = []
     spaces = re.compile(" +")
-    with open("../day1.txt", "r") as f:
+    with open("../inputs/day01.txt", "r") as f:
         for line in f:
             ar1, ar2 = map(int, spaces.sub(" ", line.strip()).split(" "))
             first_list.append(ar1)
@@ -25,7 +25,7 @@ def parse_part2() -> tuple[list[int], dict[int, int]]:
     first_list: list[int] = []
     second_list_dict: dict[int, int] = defaultdict(lambda: 0)
     spaces = re.compile(" +")
-    with open("../day1.txt", "r") as f:
+    with open("../inputs/day01.txt", "r") as f:
         for line in f:
             ar1, ar2 = map(int, spaces.sub(" ", line.strip()).split(" "))
             first_list.append(ar1)

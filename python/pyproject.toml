@@ -1,22 +1,31 @@
-[tool.poetry]
+[project]
 name = "advent-of-code-2024"
 version = "0.1.0"
 description = ""
-authors = ["Manshilin Oleg <manshilin.o@gmail.com>"]
-license = "MIT"
+authors = [{ name = "Manshilin Oleg", email = "manshilin.o@gmail.com" }]
+requires-python = ">=3.12,<4"
 readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = ["numpy>=2.1.3,<3"]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-numpy = "^2.1.3"
+[dependency-groups]
+dev = [
+    "pylance>=0.19.2,<0.20",
+    "ruff>=0.8.1,<0.9",
+    "ipython>=8.30.0,<9",
+    "pyright>=1.1.389,<2",
+    "mypy>=1.13.0,<2",
+]
 
-[tool.poetry.group.dev.dependencies]
-pylance = "^0.19.2"
-ruff = "^0.8.1"
-ipython = "^8.30.0"
-pyright = "^1.1.389"
-mypy = "^1.13.0"
+[tool.uv]
+default-groups = "all"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.11.2,<0.12.0"]
+build-backend = "uv_build"

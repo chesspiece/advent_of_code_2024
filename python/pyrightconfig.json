@@ -16,6 +16,6 @@
     "reportUnknownMemberType": false,
     "reportUnknownVariableType": true,
   
-    "pythonVersion": "3.12",
+    "pythonVersion": "3.14",
     "pythonPlatform": "Linux"
 }

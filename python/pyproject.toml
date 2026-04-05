@@ -21,6 +21,8 @@ dev = [
     "ipython>=8.30.0,<9",
     "pyright>=1.1.389,<2",
     "mypy>=1.13.0,<2",
+    "pytest>=8.3.4,<9",
+    "pytest-mock>=3.14.0,<4",
 ]
 
 [tool.uv]

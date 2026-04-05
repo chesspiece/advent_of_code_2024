@@ -35,10 +35,10 @@ impl LocationLists {
 
         let mut res: i64 = 0;
 
-        for idx in 0..self.left.len() {
-            let intermediate_result = match counts.get(&self.left[idx]) {
+        for left_val in &self.left {
+            let intermediate_result = match counts.get(left_val) {
                 None => 0,
-                Some(value) => &self.left[idx] * value,
+                Some(value) => left_val * value,
             };
             res += intermediate_result;
         }

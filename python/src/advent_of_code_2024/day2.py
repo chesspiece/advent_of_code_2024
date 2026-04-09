@@ -33,14 +33,13 @@ def check_report(report: list[int]) -> bool:
             diff_dir = MessageDirection.DEC
         else:
             return False
-
         diff_abs = abs(diff)
         if (diff_abs < 1) or (diff_abs > 3):
             return False
         prev_val = curr_value
-
     except IndexError:
         return True
+
     for curr_value in report[2::]:
         diff = prev_val - curr_value
         if diff > 0:
@@ -49,7 +48,6 @@ def check_report(report: list[int]) -> bool:
             curr_diff_dir = MessageDirection.DEC
         if curr_diff_dir != diff_dir:
             return False
-
         diff_abs = abs(diff)
         if (diff_abs < 1) or (diff_abs > 3):
             return False

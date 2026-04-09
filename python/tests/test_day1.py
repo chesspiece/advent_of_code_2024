@@ -29,9 +29,7 @@ def test_parse_part2_returns_expected_counts(mocker: MockerFixture) -> None:
     assert dict(second_dict) == {4: 1, 3: 3, 5: 1, 9: 1}
 
 
-def test_day1_part1_prints_sample_answer(
-    capsys, mocker: MockerFixture
-) -> None:
+def test_day1_part1_prints_sample_answer(capsys, mocker: MockerFixture) -> None:
     mocker.patch("builtins.open", mocker.mock_open(read_data=SAMPLE_INPUT))
     result = day1_part1()
 
@@ -40,9 +38,7 @@ def test_day1_part1_prints_sample_answer(
     assert captured.out == "11\n"
 
 
-def test_day1_part2_prints_sample_answer(
-    capsys, mocker: MockerFixture
-) -> None:
+def test_day1_part2_prints_sample_answer(capsys, mocker: MockerFixture) -> None:
     mocker.patch("builtins.open", mocker.mock_open(read_data=SAMPLE_INPUT))
     result = day1_part2()
 

@@ -2,7 +2,6 @@
 Solutions to day1 of advent of code
 """
 
-import re
 from enum import Enum
 
 
@@ -12,14 +11,10 @@ class MessageDirection(Enum):
     DEC = 3
 
 
-def parse_part1() -> list[list[int]]:
-    reports_list: list[list[int]] = []
-    spaces = re.compile(" +")
+def parse_part1():
     with open("../inputs/day02.txt", "r") as f:
         for line in f:
-            report = [int(x) for x in spaces.sub(" ", line.strip()).split(" ")]
-            reports_list.append(report)
-    return reports_list
+            yield list(map(int, line.split()))
 
 
 def check_report(report: list[int]) -> bool:

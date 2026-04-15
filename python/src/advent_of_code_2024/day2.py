@@ -17,8 +17,12 @@ def parse_part1():
             yield list(map(int, line.split()))
 
 
-def check_report(report: list[int]) -> bool:
-    try:
+def check_report(report: list[int], curr_diff_dir=MessageDirection.UNDEFINED) -> bool:
+    if len(report) <= 1:
+        return True
+    diff = curr_diff_dir
+
+    if curr_diff_dir == MessageDirection.UNDEFINED:
         prev_val = report[0]
         curr_value = report[1]
         diff = prev_val - curr_value
@@ -32,10 +36,9 @@ def check_report(report: list[int]) -> bool:
         if (diff_abs < 1) or (diff_abs > 3):
             return False
         prev_val = curr_value
-    except IndexError:
-        return True
 
-    for curr_value in report[2::]:
+    prev_val = report[0]
+    for curr_value in report[1::]:
         diff = prev_val - curr_value
         if diff > 0:
             curr_diff_dir = MessageDirection.INC

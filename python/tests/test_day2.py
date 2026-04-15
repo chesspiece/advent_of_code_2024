@@ -2,7 +2,7 @@ import numpy as np
 import numpy.testing as npt
 from pytest_mock import MockerFixture
 from inspect import isgenerator
-from advent_of_code_2024.day2 import day2_part1, parse_part1
+from advent_of_code_2024.day2 import day2, parse_part1
 
 SAMPLE_INPUT = """7 6 4 2 1
 1 2 7 8 9
@@ -32,8 +32,8 @@ def test_parse_part1_returns_expected_arrays(mocker: MockerFixture) -> None:
 
 def test_day2_part1_prints_sample_answer(capsys, mocker: MockerFixture) -> None:
     mocker.patch("builtins.open", mocker.mock_open(read_data=SAMPLE_INPUT))
-    result = day2_part1()
+    result = day2()
 
     captured = capsys.readouterr()
     assert result is None
-    assert captured.out == "2\n"
+    assert captured.out == "2\n4\n"

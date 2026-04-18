@@ -1,8 +1,8 @@
-import numpy as np
-import numpy.testing as npt
-from pytest_mock import MockerFixture
 from inspect import isgenerator
-from advent_of_code_2024.day2 import day2, parse_part1
+
+from pytest_mock import MockerFixture
+
+from advent_of_code_2024.day2 import check_report, day2, parse_part1
 
 SAMPLE_INPUT = """7 6 4 2 1
 1 2 7 8 9
@@ -37,3 +37,15 @@ def test_day2_part1_prints_sample_answer(capsys, mocker: MockerFixture) -> None:
     captured = capsys.readouterr()
     assert result is None
     assert captured.out == "2\n4\n"
+
+
+def test_check_report_first_layer() -> None:
+    assert check_report([1, 6, 5]) == (False, True)
+
+
+def test_check_report_undefined_pair() -> None:
+    assert check_report([1, 1, 2]) == (False, True)
+
+
+def test_check_report_reject() -> None:
+    assert check_report([1, 2, 7, 8, 9]) == (False, False)

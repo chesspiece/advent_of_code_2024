@@ -1,5 +1,5 @@
 """
-Solutions to day1 of advent of code
+Solutions to day2 of advent of code
 """
 
 from enum import Enum
@@ -18,50 +18,51 @@ def parse_part1():
 
 
 def check_report(
-    report: list[int], diff_dir=MessageDirection.UNDEFINED, was_error = False
+    report: list[int], diff_dir=MessageDirection.UNDEFINED, was_error=False
 ) -> tuple[bool, bool]:
     if len(report) <= 1:
-        return True
-    #diff = curr_diff_dir
-    day1_solution = False
-    day2_solution = False
+        return (True, True)
 
     if diff_dir == MessageDirection.UNDEFINED:
-        prev_val = report[0]
-        curr_value = report[1]
-        diff = prev_val - curr_value
-        if diff > 0:
-            diff_dir = MessageDirection.INC
-        elif diff < 0:
-            diff_dir = MessageDirection.DEC
-        else:
-            raise Exception("I think task description makes this branch impossible")
+        d1_inc, _ = check_report(report, MessageDirection.INC, True)
+        d1_dec, _ = check_report(report, MessageDirection.DEC, True)
+        day1_solution = d1_inc or d1_dec
+
+        _, d2_inc = check_report(report, MessageDirection.INC, False)
+        _, d2_dec = check_report(report, MessageDirection.DEC, False)
+        day2_solution = d2_inc or d2_dec
+
+        return (day1_solution, day2_solution)
 
     prev_val = report[0]
-    for (idx, curr_value) in enumerate(report[1::]):
+    for i in range(1, len(report)):
+        curr_value = report[i]
         diff = prev_val - curr_value
+
         if diff > 0:
             curr_diff_dir = MessageDirection.INC
-        else:
+        elif diff < 0:
             curr_diff_dir = MessageDirection.DEC
+        else:
+            curr_diff_dir = MessageDirection.UNDEFINED
 
-        if curr_diff_dir != diff_dir:
+        if curr_diff_dir != diff_dir or not (1 <= abs(diff) <= 3):
             if was_error:
                 return (False, False)
             else:
-                _, solday2 = check_report([report[idx-1]] + report[idx+1::], diff_dir, True)
-                _, solday2_v2 = check_report([report[idx-2]] + report[idx::], diff_dir, True)
-                return (False, solday2 or solday2_v2)
-        
-        diff_abs = abs(diff)
-        if (diff_abs < 1) or (diff_abs > 3):
-            if was_error:
-                return (False, False)
-            else:
-                _, solday2 = check_report([report[idx-1]] + report[idx+1::], diff_dir, True)
-                _, solday2_v2 = check_report([report[idx-2]] + report[idx::], diff_dir, True)
-                return (False, solday2 or solday2_v2)
+                _, solday2_opt1 = check_report(
+                    report[i - 1 : i] + report[i + 1 :], diff_dir, True
+                )
+                _, solday2_opt2 = check_report(
+                    report[i - 2 : i - 1]
+                    + report[i:],  # Have not tested if it works when i==1
+                    diff_dir,
+                    True,
+                )
+                return (False, solday2_opt1 or solday2_opt2)
+
         prev_val = curr_value
+
     return (True, True)
 
 
